@@ -4,8 +4,13 @@ namespace Bookish_cs.Models
 {
     public class MemberManagementViewModel
     {
-        public string RequestId { get; set; }
+        public string Name { get; set; }
+        public string Role { get; set; }
 
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+        public MemberManagementViewModel()
+        {
+            Name = "Awesome";
+            Role = "Librarian";
+        }
     }
 }

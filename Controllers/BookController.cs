@@ -9,6 +9,7 @@ using Bookish_cs.Models;
 
 namespace Bookish_cs.Controllers
 {
+    [Route("/[controller]/{action=Booklist}")]
     public class BookController : Controller
     {
         private readonly ILogger<BookController> _logger;
@@ -18,15 +19,10 @@ namespace Bookish_cs.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult Booklist()
         {
             return View(new BookManagementViewModel());
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }

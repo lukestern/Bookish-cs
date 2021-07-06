@@ -9,6 +9,7 @@ using Bookish_cs.Models;
 
 namespace Bookish_cs.Controllers
 {
+    [Route("/[controller]/{action=Memberlist}")]
     public class MemberController : Controller
     {
         private readonly ILogger<MemberController> _logger;
@@ -18,20 +19,9 @@ namespace Bookish_cs.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult MemberList()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new MemberManagementViewModel());
         }
     }
 }

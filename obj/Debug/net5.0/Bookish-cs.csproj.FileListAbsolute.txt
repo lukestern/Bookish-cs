@@ -145,3 +145,5 @@ C:\Users\suwtru\training\Bookish-cs\obj\Debug\net5.0\Bookish-cs.Views.pdb
 C:\Users\suwtru\training\Bookish-cs\obj\Debug\net5.0\Bookish-cs.csproj.CopyComplete
 C:\Users\suwtru\training\Bookish-cs\obj\Debug\net5.0\Bookish-cs.genruntimeconfig.cache
 C:\Users\suwtru\training\Bookish-cs\obj\Debug\net5.0\Razor\Views\Member\MemberList.cshtml.g.cs
+C:\Users\suwtru\training\Bookish-cs\bin\Debug\net5.0\Humanizer.dll
+C:\Users\suwtru\training\Bookish-cs\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll

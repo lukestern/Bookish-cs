@@ -4,8 +4,13 @@ namespace Bookish_cs.Models
 {
     public class BookManagementViewModel
     {
-        public string RequestId { get; set; }
+        public string Title { get; set; }
+        public string Author { get; set; }
 
-        public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
+        public BookManagementViewModel()
+        {
+            Title = "The Lord of the Rings";
+            Author = "J.R.R Tolkien";
+        }
     }
 }

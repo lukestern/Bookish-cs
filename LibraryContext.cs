@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
+//using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,14 +20,14 @@ namespace Bookish_cs
             optionsBuilder.UseSqlServer(@"Server=localhost;Database=LibraryDB;Trusted_Connection=True;");
         }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-            base.OnModelCreating(modelBuilder);
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<AuthorBook>().
-                 HasOptional(e => e.BookId).
-                 WithMany().
-                 HasForeignKey(m => m.Id);
-        }
+        //    modelBuilder.Entity<AuthorBook>().
+        //         HasOptional(e => e.BookId).
+        //         WithMany().
+        //         HasForeignKey(m => m.Id);
+        //}
     }
 }

@@ -6,22 +6,24 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Bookish_cs.Models;
+using Bookish_cs.Services;
 
 namespace Bookish_cs.Controllers
 {
     [Route("/[controller]/{action=Booklist}")]
     public class BookController : Controller
     {
-        private readonly ILogger<BookController> _logger;
+        private readonly IBookService _bookService;
 
-        public BookController(ILogger<BookController> logger)
+        public BookController(IBookService bookService)
         {
-            _logger = logger;
+            _bookService = bookService;
         }
 
         public IActionResult Booklist()
         {
-            return View(new BookManagementViewModel());
+            var books = _bookService.GetAllBooks();
+            return View(new BookManagementViewModel(books));
         }
 
     }

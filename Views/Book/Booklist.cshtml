@@ -6,6 +6,14 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Book Management page</p>
-    <p>Title: @Model.Title</p>
-    <p>Author: @Model.Author</p>
+
+    @if (Model.Books.Any())
+    {
+        foreach (var book in Model.Books)
+        {
+            <p>
+                <strong>Book title:</strong> book.Title
+            </p>
+        }
+    }
 </div>

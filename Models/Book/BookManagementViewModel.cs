@@ -1,16 +1,16 @@
+using Bookish_cs.EntityClasses;
 using System;
+using System.Collections.Generic;
 
 namespace Bookish_cs.Models
 {
     public class BookManagementViewModel
     {
-        public string Title { get; set; }
-        public string Author { get; set; }
+        public List<Book> Books { get; set; }
 
-        public BookManagementViewModel()
+        public BookManagementViewModel(List<Book> books)
         {
-            Title = "The Lord of the Rings";
-            Author = "J.R.R Tolkien";
+            Books = books;
         }
     }
 }

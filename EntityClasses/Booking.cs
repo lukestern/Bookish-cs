@@ -9,6 +9,6 @@ namespace Bookish_cs.EntityClasses
         public Person Person { get; set; }
         public DateTime Checkout { get; set; }
         public DateTime Due { get; set; }
-        public DateTime Returned { get; set; }
+        public DateTime? Returned { get; set; }
     }
 }

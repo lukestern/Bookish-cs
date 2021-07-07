@@ -1,11 +1,14 @@
 using System;
 
-public class Booking
+namespace Bookish_cs.EntityClasses
 {
-    public int Id { get; set; }
-    public int BookId { get; set; }
-    public int PersonId { get; set; }
-    public DateTime Checkout { get; set; }
-    public DateTime Due { get; set; }
-    public DateTime Returned { get; set; }
+    public class Booking
+    {
+        public int Id { get; set; }
+        public Book Book { get; set; }
+        public Person Person { get; set; }
+        public DateTime Checkout { get; set; }
+        public DateTime Due { get; set; }
+        public DateTime Returned { get; set; }
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using Bookish_cs.EntityClasses;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,10 @@ namespace Bookish_cs.Services
 {
     public interface IBookService
     {
-        List<Book> GetAllBooks();
+        List<BookDbModel> GetAllBooks();
+        BookDbModel GetBookById(int id);
     }
+
     public class BookService : IBookService
     {
         private readonly BookishContext Context;
@@ -18,11 +21,17 @@ namespace Bookish_cs.Services
             Context = context;
         }
 
-        public List<Book> GetAllBooks()
+        public List<BookDbModel> GetAllBooks()
         {
+            return Context.Books.ToList();
+        }
 
-            var result = Context.Books.ToList();
-            return result;
+        public BookDbModel GetBookById(int id)
+        {
+            return Context.Books
+                .Include(book => book.Authors)
+                .Include(book => book.Bookings)
+                .Single(book => book.Id == id);
         }
     }
 }

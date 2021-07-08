@@ -10,7 +10,7 @@ using Bookish_cs.Services;
 
 namespace Bookish_cs.Controllers
 {
-    [Route("/[controller]/{action=Booklist}")]
+    [Route("/[controller]")]
     public class BookController : Controller
     {
         private readonly IBookService _bookService;
@@ -20,11 +20,18 @@ namespace Bookish_cs.Controllers
             _bookService = bookService;
         }
 
-        public IActionResult Booklist()
+        [HttpGet]
+        public IActionResult BookList()
         {
             var books = _bookService.GetAllBooks();
             return View(new BookManagementViewModel(books));
         }
 
+        [HttpGet("{id}")]
+        public IActionResult BookPage(int id)
+        {
+            var book = _bookService.GetBookById(id);
+            return View(new BookViewModel(book));
+        }
     }
 }

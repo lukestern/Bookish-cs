@@ -30,8 +30,9 @@ namespace Bookish_cs.Services
         {
             return Context.Books
                 .Include(book => book.Authors)
-                .Include(book => book.Bookings)
+                //.Include(book => book.Bookings)
                 .Single(book => book.Id == id);
+                
         }
     }
 }

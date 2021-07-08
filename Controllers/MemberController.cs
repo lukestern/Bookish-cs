@@ -19,9 +19,9 @@ namespace Bookish_cs.Controllers
             _logger = logger;
         }
 
-        public IActionResult MemberList()
-        {
-            return View(new MemberManagementViewModel());
-        }
+        //public IActionResult MemberList()
+        //{
+        //    return View(new PersonManagementViewModel());
+        //}
     }
 }

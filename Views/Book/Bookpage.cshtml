@@ -8,23 +8,28 @@
     <h1 class="display-4">Welcome</h1>
     <p>Book page</p>
     <ul>
-        <li><strong>book title:</strong> @Model.Book.Title</li>
-        @foreach (var author in Model.Book.Authors)
+        <li><strong>book title:</strong> @Model.Title</li>
+        @foreach (var author in Model.Authors)
         {
             <li><strong>Author:</strong> @author.Name</li>
         }
-        <li><strong>ISBN:</strong> @Model.Book.ISBN</li>
-        <li><strong>Quantity:</strong> @Model.Book.Quantity</li>
+        <li><strong>ISBN:</strong> @Model.ISBN</li>
+        <li><strong>Quantity:</strong> @Model.Quantity</li>
     </ul>
     <p>Bookings</p>
     <ul>
-        @foreach (var booking in Model.Book.Bookings)
+        @foreach (var booking in Model.Bookings)
         {
             if (booking.Returned is null)
             {
                 <li><strong>Member:</strong> @booking.Person.Name</li>
                 <li><strong>Checkout:</strong> @booking.Checkout</li>
                 <li><strong>Due:</strong> @booking.Due</li>
+                if (booking.OverdueDays > 0)
+                {
+                    <li><strong>Overdue:</strong> @booking.OverdueDays days</li>
+
+                }
             }
         }
     </ul>

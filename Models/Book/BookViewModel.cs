@@ -19,8 +19,8 @@ namespace Bookish_cs.Models
             Title = book.Title;
             ISBN = book.ISBN;
             Quantity = book.Quantity;
-            Authors = book.Authors.Select(author => new AuthorViewModel(author)).ToList();
-            Bookings = book.Bookings.Select(booking => new BookingViewModel(booking)).ToList();
+            Authors = book.Authors?.Select(author => new AuthorViewModel(author)).ToList() ?? new List<AuthorViewModel>();
+            Bookings = book.Bookings?.Select(booking => new BookingViewModel(booking)).ToList() ?? new List<BookingViewModel>();
         }
     }
 }

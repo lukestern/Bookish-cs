@@ -1,5 +1,5 @@
 @using Bookish_cs.Controllers;
-@model BookViewModel
+@model BookPageViewModel
 @{
     ViewData["Title"] = "Book Page";
 }
@@ -9,28 +9,27 @@
     <p>Book page</p>
     <ul>
         <li><strong>book title:</strong> @Model.Title</li>
-        @foreach (var author in Model.Authors)
+        @foreach (var authorName in Model.AuthorNames)
         {
-            <li><strong>Author:</strong> @author.Name</li>
+            <li><strong>Author:</strong> @authorName</li>
         }
         <li><strong>ISBN:</strong> @Model.ISBN</li>
-        <li><strong>Quantity:</strong> @Model.Quantity</li>
+        <li><strong>Availble Copies: </strong>@Model.AvailbleCopies / @Model.Quantity</li>
     </ul>
-    <p>Bookings</p>
-    <ul>
-        @foreach (var booking in Model.Bookings)
-        {
-            if (booking.Returned is null)
+    @if (Model.Bookings.Any())
+    {
+        <p>Bookings</p>
+        <ul>
+            @foreach (var booking in Model.Bookings)
             {
-                <li><strong>Member:</strong> @booking.Person.Name</li>
+                <li><strong>Member:</strong> @booking.PersonName</li>
                 <li><strong>Checkout:</strong> @booking.Checkout</li>
                 <li><strong>Due:</strong> @booking.Due</li>
                 if (booking.OverdueDays > 0)
                 {
                     <li><strong>Overdue:</strong> @booking.OverdueDays days</li>
-
                 }
             }
-        }
-    </ul>
+        </ul>
+    }
 </div>

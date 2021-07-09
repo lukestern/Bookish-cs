@@ -4,17 +4,17 @@ using System.Linq;
 
 namespace Bookish_cs.Models
 {
-    public class AuthorViewModel
+    public class AuthorData
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public List<BookViewModel> Books { get; set; }
+        public List<string> Books { get; set; }
 
-        public AuthorViewModel(AuthorDbModel author)
+        public AuthorData(AuthorDbModel author)
         {
             Id = author.Id;
             Name = author.Name;
-            Books = author.Books.Select(book => new BookViewModel(book)).ToList();
+            Books = author.Books.Select(book => book.Title).ToList();
         }
     }
 }

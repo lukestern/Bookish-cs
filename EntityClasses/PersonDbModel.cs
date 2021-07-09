@@ -8,5 +8,5 @@ namespace Bookish_cs.EntityClasses
         public string Name { get; set; }
         public string Role { get; set; }
         public List<BookingDbModel> Bookings { get; set; }
-}
+    }
 }

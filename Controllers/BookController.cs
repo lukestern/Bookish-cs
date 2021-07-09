@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Bookish_cs.Models;
 using Bookish_cs.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Bookish_cs.Controllers
 {
@@ -31,7 +25,7 @@ namespace Bookish_cs.Controllers
         public IActionResult BookPage(int id)
         {
             var book = _bookService.GetBookById(id);
-            return View(new BookViewModel(book));
+            return View(new BookPageViewModel(book));
         }
     }
 }

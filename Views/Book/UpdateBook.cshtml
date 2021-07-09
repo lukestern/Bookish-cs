@@ -1,0 +1,19 @@
+@model UpdateBookViewModel
+@using Bookish_cs.Controllers;
+@{
+    ViewData["Title"] = "Update Book";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Book page</p>
+
+    <form asp-controller="Book" asp-action="UpdateBook" method="post">
+        Title: <input asp-for="Title" value=@Model.Title /><br />
+        ISBN: <input asp-for="ISBN" value=@Model.ISBN /><br />
+        Quantity: <input asp-for="Quantity" value=@Model.Quantity /><br />
+        Author: <input asp-for="AuthorNames" value=@Model.AuthorNames /><br />
+
+        <button type="submit">Sumbit</button>
+    </form>
+</div>

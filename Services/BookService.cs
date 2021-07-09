@@ -11,6 +11,7 @@ namespace Bookish_cs.Services
         List<BookDbModel> GetAllBooks();
         BookDbModel GetBookById(int id);
         void AddBook(AddBookViewModel addBook);
+        void UpdateBook(UpdateBookViewModel updateBook, int id);
     }
 
     public class BookService : IBookService
@@ -34,20 +35,7 @@ namespace Bookish_cs.Services
 
         public void AddBook(AddBookViewModel newBook)
         {
-            var authorNames = new List<string>(
-                newBook.AuthorNames.Split(",").Select(name => name.Trim())
-            );
-
-            var existingAuthors = _context.Authors
-                .Where(author => authorNames
-                    .Contains(author.Name))
-                .ToList();
-            var newAuthors = authorNames
-                .Where(name => !existingAuthors
-                    .Any(n => n.Name == name))
-                .Select(name => new AuthorDbModel() { Name = name })
-                .ToList();
-            var allAuthors = existingAuthors.Concat(newAuthors).ToList();
+            var allAuthors = GetAuthorFromString(newBook.AuthorNames);
 
             var book = new BookDbModel()
             {
@@ -58,6 +46,35 @@ namespace Bookish_cs.Services
             };
             _context.Books.Add(book);
             _context.SaveChanges();
+        }
+        public void UpdateBook(UpdateBookViewModel updateBook, int id)
+        {
+            var book = GetBookById(id);
+            book.Title = updateBook.Title;
+            book.ISBN = updateBook.ISBN;
+            book.Quantity = updateBook.Quantity;
+            var allAuthors = GetAuthorFromString(updateBook.AuthorNames);
+            book.Authors = allAuthors;
+      
+            _context.SaveChanges();
+        }
+
+        public List<AuthorDbModel> GetAuthorFromString(string authorNames)
+        {
+            var names = new List<string>(
+                authorNames.Split(",").Select(name => name.Trim())
+            );
+
+            var existingAuthors = _context.Authors
+                .Where(author => names
+                    .Contains(author.Name))
+                .ToList();
+            var newAuthors = names
+                .Where(name => !existingAuthors
+                    .Any(n => n.Name == name))
+                .Select(name => new AuthorDbModel() { Name = name })
+                .ToList();
+            return existingAuthors.Concat(newAuthors).ToList();
         }
     }
 }

@@ -40,5 +40,19 @@ namespace Bookish_cs.Controllers
             _bookService.AddBook(addBookViewModel);
             return RedirectToAction(nameof(BookList));
         }
+
+        [HttpGet("{id}/Update")]
+        public IActionResult UpdateBook(int id)
+        {
+            var book = _bookService.GetBookById(id);
+            return View(new UpdateBookViewModel(book));
+        }
+
+        [HttpPost("{id}/Update")]
+        public IActionResult UpdateBook(UpdateBookViewModel updateBookViewModel, int id)
+        {
+            _bookService.UpdateBook(updateBookViewModel, id);
+            return RedirectToAction(nameof(BookList));
+        }
     }
 }

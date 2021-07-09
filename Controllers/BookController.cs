@@ -27,5 +27,18 @@ namespace Bookish_cs.Controllers
             var book = _bookService.GetBookById(id);
             return View(new BookPageViewModel(book));
         }
+
+        [HttpGet("Create")]
+        public IActionResult AddBook()
+        {
+            return View(new AddBookViewModel());
+        }
+
+        [HttpPost("Create")]
+        public IActionResult AddBook(AddBookViewModel addBookViewModel)
+        {
+            _bookService.AddBook(addBookViewModel);
+            return RedirectToAction(nameof(BookList));
+        }
     }
 }
